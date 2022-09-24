@@ -2,23 +2,24 @@
 #include <iostream>
 #include <xdo.h>
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
 
   std::string filename;
-  
-  if (argc > 1 )
-  {
-      filename = std::string(argv[1]);
-  }
-  else
-  {
-      std::cerr << "Error : Please provide the path to the device\n";
-      return EXIT_FAILURE;
+
+  if (argc > 1) {
+    filename = std::string(argv[1]);
+  } else {
+    std::cerr << "Error : Please provide the path to the device\n";
+    return EXIT_FAILURE;
   }
 
   /*Screen context*/
   xdo_t *x = xdo_new(":0.0");
 
+  if (x == nullptr) {
+    std::cerr << "Error : Failed to create new instance of xdo\n ";
+    return EXIT_FAILURE;
+  }
 
   mn::CppLinuxSerial::SerialPort serialport(
       "/dev/ttyACM0", mn::CppLinuxSerial::BaudRate::B_9600,
@@ -41,7 +42,6 @@ int main(int argc, char* argv[]) {
   }
   serialport.Close();
   delete x;
-
 
   return EXIT_SUCCESS;
 }

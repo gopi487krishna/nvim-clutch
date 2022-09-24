@@ -2,8 +2,20 @@
 #include <iostream>
 #include <xdo.h>
 
-int main() {
+int main(int argc, char* argv[]) {
+
+  std::string filename;
   
+  if (argc > 1 )
+  {
+      filename = std::string(argv[1]);
+  }
+  else
+  {
+      std::cerr << "Error : Please provide the path to the device\n";
+      return EXIT_FAILURE;
+  }
+
   /*Screen context*/
   xdo_t *x = xdo_new(":0.0");
 
@@ -29,5 +41,7 @@ int main() {
   }
   serialport.Close();
   delete x;
-  return 0;
+
+
+  return EXIT_SUCCESS;
 }

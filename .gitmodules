@@ -1,0 +1,3 @@
+[submodule "CppLinuxSerial"]
+	path = CppLinuxSerial
+	url = https://github.com/gbmhunter/CppLinuxSerial.git

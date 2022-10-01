@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
   }
 
   mn::CppLinuxSerial::SerialPort serialport(
-      "/dev/ttyACM0", mn::CppLinuxSerial::BaudRate::B_9600,
+      filename, mn::CppLinuxSerial::BaudRate::B_9600,
       mn::CppLinuxSerial::NumDataBits::EIGHT, mn::CppLinuxSerial::Parity::NONE,
       mn::CppLinuxSerial::NumStopBits::ONE);
 
